@@ -23,25 +23,29 @@
 		}
 	  ],
 	  "dependencies": {
-		// Cysharp 全家桶核心
-		"com.cysharp.unitask": "2.5.10",                 // 或不写版本，让自动最新
-		"com.cysharp.messagepipe": "1.9.0",
-		"com.cysharp.messagepipe.vcontainer": "1.9.0",
-		"com.cysharp.memorypack": "1.10.0",
-		"com.cysharp.zstring": "2.6.0",
-
-		// 强烈推荐加这些
-		"com.cysharp.r3": "1.0.0",                        // 取代UniRx
-		"com.cysharp.observablecollections": "1.0.0",    // 动态UI列表
-		"com.cysharp.mastermemory": "1.0.0",             // 表查询加速
-
-		// DI框架（非Cysharp，但必配）
+		"com.cysharp.messagepipe": "1.8.1",
+		"com.cysharp.messagepipe.vcontainer": "1.8.1",
+		"com.cysharp.unitask": "2.5.10",
+		"com.github-glitchenzo.nugetforunity": "4.5.0",
 		"jp.hadashikick.vcontainer": "1.17.0",
-
 		// 其他Unity官方（示例）
 		"com.unity.ugui": "1.0.0",
 		"com.unity.ide.visualstudio": "2.0.26"
 	  }
 	}
 	```
-2. 
+	- [ ] NugetForUnity
+		- OpenUPM⚙️"com.github-glitchenzo.nugetforunity":4.5.0
+	- [ ] UniTask
+		- OpenUPM⚙️com.cysharp.unitask:2.5.10
+	- [ ] VContainer
+		- OpenUPM⚙️jp.hadashikick.vcontainer:1.17.0
+	- [ ] MessagePipe
+		- OpenUPM⚙️com.cysharp.messagepipe:1.8.1
+		- OpenUPM⚙com.cysharp.messagepipe.vcontainer:1.8.1
+	- [ ] R3
+		- OpenUPM⚙各种not found
+		- NuGet⚙R3:1.3.0
+	- [ ] MemoryPack
+		- OpenUPM⚙️各种not found
+		- NuGet⚙MemoryPack:1.21.4
