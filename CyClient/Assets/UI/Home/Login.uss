@@ -1,68 +1,55 @@
+/* 位置由 HomeUI C# 像素赋值，这里只做外观，禁止 translate/top:50% */
 .login-popup {
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    /* 补上这一句 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .login-dim {
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
     background-color: rgba(0, 0, 0, 0.65);
 }
 
 .login-window {
-    width: 420px;
-    min-height: 280px;
-    padding: 32px;
+    padding: 28px 32px 24px 32px;
     background-color: rgb(45, 50, 65);
     border-radius: 16px;
-    
-    /* 改用逻辑居中 */
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
+    flex-direction: column;
 }
 
 .login-title {
-    margin-bottom: 24px;
-    color: white;
-    font-size: 28px;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    font-size: 26px;
     -unity-font-style: bold;
     -unity-text-align: middle-center;
+    height: 36px;
 }
 
 .login-input {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+    height: 40px;
     font-size: 16px;
-    min-height: 36px;
 }
 
 .login-buttons {
-    margin-top: 20px;
+    margin-top: 16px;
+    height: 48px;
     flex-direction: row;
     justify-content: space-between;
-}
-
-.login-buttons Button {
-    width: 160px;
-    height: 44px;
-    font-size: 18px;
+    align-items: center;
 }
 
 .secondary-button {
+    width: 48%;
+    height: 44px;
+    font-size: 18px;
     background-color: rgb(90, 90, 100);
+    color: rgb(255, 255, 255);
 }
 
 .primary-button {
+    width: 48%;
+    height: 44px;
+    font-size: 18px;
     background-color: rgb(50, 110, 200);
+    color: rgb(255, 255, 255);
 }

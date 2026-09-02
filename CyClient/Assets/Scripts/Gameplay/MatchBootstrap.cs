@@ -5,9 +5,6 @@ using Cysharp.Threading.Tasks;
 using MessagePipe;
 using UnityEngine;
 
-/// <summary>
-/// 匹配 → 联网 → JoinAck → AB/占位生成玩家 → 移动同步
-/// </summary>
 public class MatchBootstrap : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;
@@ -40,7 +37,7 @@ public class MatchBootstrap : MonoBehaviour
 
     private async UniTaskVoid SpawnLocalAsync(CancellationToken ct)
     {
-        var go = await LoadPlayerPrefabAsync(ct);
+        var go = await LoadPlayerAsync(ct);
         go.name = $"LocalPlayer_{_session.LocalPlayerId}";
         go.transform.position = spawnPoint ? spawnPoint.position : Vector3.zero;
         var pc = go.GetComponent<PlayerController>() ?? go.AddComponent<PlayerController>();
@@ -62,7 +59,7 @@ public class MatchBootstrap : MonoBehaviour
     private async UniTaskVoid SpawnRemoteAsync(MoveSnapshotPacket snap)
     {
         if (_remotes.ContainsKey(snap.PlayerId)) return;
-        var go = await LoadPlayerPrefabAsync(this.GetCancellationTokenOnDestroy());
+        var go = await LoadPlayerAsync(this.GetCancellationTokenOnDestroy());
         go.name = $"Remote_{snap.PlayerId}";
         var view = go.GetComponent<RemotePlayerView>() ?? go.AddComponent<RemotePlayerView>();
         view.Setup(snap.PlayerId, new Vector3(snap.X, snap.Y, snap.Z));
@@ -71,23 +68,28 @@ public class MatchBootstrap : MonoBehaviour
         _remotes[snap.PlayerId] = view;
     }
 
-    private async UniTask<GameObject> LoadPlayerPrefabAsync(CancellationToken ct)
+    /// <summary>
+    /// 规范：经 ResManager。Editor 走 AssetDatabase；路径约定见 GameConstants。
+    /// </summary>
+    private async UniTask<GameObject> LoadPlayerAsync(CancellationToken ct)
     {
         try
         {
-            using (await ABManager.Instance.LoadBundleHandleAsync(GameConstants.AbPlayer, ct))
-            {
-                var prefab = await ABManager.Instance.LoadAssetAsync<GameObject>(
-                    GameConstants.AbPlayer, GameConstants.AssetPlayer, ct);
-                if (prefab != null) return Instantiate(prefab);
-            }
+            var go = await ResManager.InstantiateAsync(
+                GameConstants.AbPlayer,
+                GameConstants.AssetPlayer,
+                null,
+                ct);
+            if (go != null) return go;
         }
         catch (Exception e)
         {
-            Debug.LogWarning($"[Match] AB fail: {e.Message}");
+            Debug.LogWarning($"[Match] ResManager: {e.Message}");
         }
 
-        if (editorFallbackPrefab != null) return Instantiate(editorFallbackPrefab);
+        if (editorFallbackPrefab != null)
+            return Instantiate(editorFallbackPrefab);
+
         var cap = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         cap.AddComponent<PlayerController>();
         return cap;
