@@ -1,0 +1,59 @@
+.home-root {
+    flex-grow: 1;
+    position: relative;
+}
+
+.background {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    background-color: rgb(30, 35, 45);
+}
+
+.content {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    margin-bottom: 12px;
+    color: white;
+    font-size: 42px;
+    -unity-font-style: bold;
+}
+
+.player-name {
+    margin-bottom: 8px;
+    color: rgb(180, 200, 255);
+    font-size: 20px;
+}
+
+.net-status {
+    margin-bottom: 28px;
+    color: rgb(140, 140, 150);
+    font-size: 16px;
+}
+
+.primary-button {
+    width: 260px;
+    height: 56px;
+    margin-bottom: 12px;
+    font-size: 22px;
+}
+
+.match-button {
+    background-color: rgb(40, 120, 90);
+}
+
+.tip {
+    margin-top: 16px;
+    color: rgb(120, 120, 130);
+    font-size: 14px;
+    -unity-text-align: middle-center;
+}
+
+.login-layer {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+}

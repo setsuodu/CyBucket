@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="Home.uss" />
+    <ui:VisualElement name="home-root" class="home-root">
+        <ui:VisualElement name="background" class="background" />
+        <ui:VisualElement name="content" class="content">
+            <ui:Label name="title" text="CyClient Home" class="title" />
+            <ui:Label name="player-name" text="" class="player-name" />
+            <ui:Label name="net-status" text="未连接" class="net-status" />
+            <ui:Button name="btn-login" text="LOGIN" class="primary-button" />
+            <ui:Button name="btn-match" text="匹配" class="primary-button match-button" />
+            <ui:Label name="tip" text="服务器 127.0.0.1:9050" class="tip" />
+        </ui:VisualElement>
+        <!-- 动态 Popup 容器 -->
+        <ui:VisualElement name="login-layer" class="login-layer" picking-mode="Ignore" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="Login.uss" />
+    <ui:VisualElement name="login-popup" class="login-popup">
+        <ui:VisualElement name="login-dim" class="login-dim" />
+        <ui:VisualElement name="login-window" class="login-window">
+            <ui:Label text="登录" class="login-title" />
+            <ui:TextField name="input-username" label="账号" class="login-input" />
+            <ui:TextField name="input-password" label="密码" class="login-input" password="true" />
+            <ui:VisualElement class="login-buttons">
+                <ui:Button name="btn-close" text="关闭" class="secondary-button" />
+                <ui:Button name="btn-submit" text="确定" class="primary-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

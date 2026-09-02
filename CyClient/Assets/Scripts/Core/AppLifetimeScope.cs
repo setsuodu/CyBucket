@@ -4,7 +4,8 @@ using VContainer;
 using VContainer.Unity;
 
 /// <summary>
-/// 全局 DI 根。场景挂一个物体 + 此组件，勾选 Parent 无。
+/// 全局 DI 根。场景挂一个物体。
+/// UI 由 PanelRenderer + HomeUI 驱动，不再注册 UIService。
 /// </summary>
 public class AppLifetimeScope : LifetimeScope
 {
@@ -28,7 +29,6 @@ public class AppLifetimeScope : LifetimeScope
 
         builder.Register<GameSession>(Lifetime.Singleton);
         builder.Register<NetworkService>(Lifetime.Singleton);
-        builder.Register<UIService>(Lifetime.Singleton);
         builder.RegisterEntryPoint<AppEntryPoint>();
     }
 }
