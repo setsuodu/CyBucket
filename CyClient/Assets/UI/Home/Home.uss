@@ -1,5 +1,7 @@
 .home-root {
     flex-grow: 1;
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 
@@ -53,7 +55,10 @@
     -unity-text-align: middle-center;
 }
 
+/* 弹层必须铺满，且默认不挡点击（有 popup 时子节点会接事件） */
 .login-layer {
     position: absolute;
     left: 0; right: 0; top: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
 }
