@@ -43,11 +43,11 @@
       "url": "https://package.openupm.com"
     },
     "com.setsuodu.assetbundleframework": {
-      "version": "1.0.0",
+      "version": "1.0.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.cysharp.unitask": "2.5.0"
+        "com.cysharp.unitask": "2.5.11"
       },
       "url": "https://package.openupm.com"
     },
